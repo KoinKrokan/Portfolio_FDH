@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Modern Color Scheme */
+        :root {
+            --primary-color: #2d3436;
+            --secondary-color: #000000;
+            --accent-color: #3498db;
+            --text-light: #ffffff;
+            --text-dark: #2d3436;
+            --card-bg: #ffffff;
+            --tag-bg: #f0f2f5;
+        }
+
+        /* Hero Section Animation */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(94, 93, 65, 0.7), rgba(68, 17, 64, 0.7)), url('Background Projects.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: #f5f5f5;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--text-dark);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .project-details {
+            margin-bottom: 20px;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .project-detail-item i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .project-detail-item span {
+            font-size: 0.9rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .view-demo {
+            background: var(--accent-color);
+            color: white;
+            border: 2px solid var(--accent-color);
+        }
+
+        .view-demo:hover {
+            background: transparent;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .view-demo i {
+            transition: transform 0.3s ease;
+        }
+
+        .view-demo:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Modal Styles */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1050;
+            overflow-y: auto;
+            padding: 50px 0;
+        }
+
+        .project-modal .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: 15px;
+            position: relative;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .project-modal.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            max-height: 500px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+            z-index: 1060;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .project-modal {
+                padding: 20px 0;
+            }
+            
+            .project-modal .modal-content {
+                width: 95%;
+                margin: 20px auto;
+                padding: 20px;
+            }
+            
+            .modal-image {
+                max-height: 300px;
+            }
+        }
+
+/* Navbar Styles */
+.navbar {
+            background: #000000 !important;
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 500;
+            font-size: 1.25rem;
+            color: var(--text-light) !important;
+            padding: 0 1rem;
+        }
+        
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.65) !important;
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: rgba(255, 255, 255, 0.95) !important;
+            font-weight: 400;
+        }
+
+        .navbar-nav .nav-link.active::after {
+            display: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            outline: 0;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 1.75rem auto;
+            max-width: 800px;
+        }
+
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            border-radius: 15px;
+            outline: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #dee2e6;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            padding: 1rem;
+        }
+
+        .modal-body {
+            position: relative;
+            flex: 1 1 auto;
+            padding: 1rem;
+            max-height: calc(100vh - 210px);
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #dee2e6;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            padding: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .modal-dialog {
+                margin: 1rem;
+            }
+            
+            .modal-body {
+                max-height: calc(100vh - 180px);
+            }
+        }
+
+        /* Ensure modal backdrop covers the entire viewport */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1040;
+        }
+
+        /* Add smooth transition for modal */
+        .modal.fade .modal-dialog {
+            transition: transform .3s ease-out;
+            transform: translate(0, -50px);
+        }
+
+        .modal.show .modal-dialog {
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Fauzi Daffa Hanatha</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="projects.html">My Project</a></li>
+                    <li class="nav-item"><a class="nav-link" href="publications.html">My Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Projects</h1>
+                <p>This project is the result of my personal efforts to explore and utilize geoscience for a greater purpose. Through each project, I strive to bridge earth science with modern technology, creating solutions that are useful not only for the academic world, but also for the wider community who need a better understanding of the earth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section Title -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4" style="color: white; font-size: 2.5rem; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); position: relative; padding-bottom: 15px;">
+            Completed Projects
+            <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)); border-radius: 3px;"></div>
+        </h2>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="container">
+        <div class="row">
+            <!-- Project Card 1 -->
+            <div class="col-md-6 col-lg-4" data-category="geophysics">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="1. Pesut Mahakam.png" alt="Seismic Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Seismic Interpretaions Of Upper Kutei</h3>
+                        <div class="project-tags">
+                            <span class="tag">Geophysics</span>
+                            <span class="tag">Seismic</span>
+                            <span class="tag">Geology</span>
+                        </div>
+                        <p class="project-description">Advanced seismic data interpretation for hydrocarbon exploration in the East Kalimantan Basin</p>
+                        <div class="project-details">
+                            <div class="project-detail-item">
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-building"></i>
+                                <span>Geosain Delta Andalan</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link view-demo">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="col-md-6 col-lg-4" data-category="geology">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="1. Bireuen.png" alt="Carbonate Study">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Seismic Interpretaions Of North Sumatra Basin</h3>
+                        <div class="project-tags">
+                            <span class="tag">Geophysics</span>
+                            <span class="tag">Seismic</span>
+                            <span class="tag">Geology</span>
+                        </div>
+                        <p class="project-description">Comprehensive study of carbonate reservoir explorations and potential in the North Sumatra Basin</p>
+                        <div class="project-details">
+                            <div class="project-detail-item">
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-building"></i>
+                                <span>Geosain Delta Andalan</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link view-demo">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="col-md-6 col-lg-4" data-category="gis">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="1. Migas Lampung Gravity-Seismic.png" alt="GIS Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Gravity Modeling and Seismic Interpretations Of South Sumatra basin</h3>
+                        <div class="project-tags">
+                            <span class="tag">Geophysics</span>
+                            <span class="tag">Geology</span>
+                            <span class="tag">Analysis</span>
+                        </div>
+                        <p class="project-description">Advanced seismic data interpretation and gravity modeling for hydrocarbon potential in the South Sumatra Basin.</p>
+                        <div class="project-details">
+                            <div class="project-detail-item">
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-building"></i>
+                                <span>GeoHan</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link view-demo">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 4 -->
+            <div class="col-md-6 col-lg-4" data-category="gis">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="1. Madyasta Geomodel.png" alt="GIS Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Lithology Distribution Modeling Based on Sub-Bottom Profiler data and Samples</h3>
+                        <div class="project-tags">
+                            <span class="tag">Oceanographic</span>
+                            <span class="tag">Geophysics</span>
+                            <span class="tag">Geohazard</span>
+                        </div>
+                        <p class="project-description">Lithology Distribution Modeling Using Geomodeling or Geostatistics in the Seribu Islands Area.</p>
+                        <div class="project-details">
+                            <div class="project-detail-item">
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-building"></i>
+                                <span>Madyasta Geotama Indonesia</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link view-demo">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 5 -->
+            <div class="col-md-6 col-lg-4" data-category="gis">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="1. GIS_Madyasta_Metland.png" alt="GIS Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">GIS Mapping Project</h3>
+                        <div class="project-tags">
+                            <span class="tag">GIS</span>
+                            <span class="tag">Mapping</span>
+                            <span class="tag">Analysis</span>
+                        </div>
+                        <p class="project-description">Survey, digital, and spatial mapping analysis for housing development in Jakarta.</p>
+                        <div class="project-details">
+                            <div class="project-detail-item">
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-building"></i>
+                                <span>Madyasta Geotama Indonesia</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link view-demo">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 6 -->
+            <div class="col-md-6 col-lg-4" data-category="gis">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="1. Kemendikbud_Pindul.png" alt="GIS Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Microseismic Survey for Geohazard on Pindul Cave Area</h3>
+                        <div class="project-tags">
+                            <span class="tag">Geophysics</span>
+                            <span class="tag">Geohazard</span>
+                            <span class="tag">Hydrography</span>
+                        </div>
+                        <p class="project-description">Microseismic survey for disaster management in the Pindul area in collaboration with the Ministry of Education and Culture and BMKG Yogyakarta.</p>
+                        <div class="project-details">
+                            <div class="project-detail-item">
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-building"></i>
+                                <span>Kemendikbud and BMKG Yogyakarta</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link view-demo">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modals -->
+    <!-- Modal for Project 1 -->
+    <div class="project-modal" id="modal-project1">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-image">
+                <img src="1. Pesut Mahakam.png" alt="Seismic Project">
+            </div>
+            <h2 class="modal-title">Seismic Interpretaions Of Upper Kutei</h2>
+            <div class="modal-tags">
+                <span class="tag">Geophysics</span>
+                <span class="tag">Seismic</span>
+                <span class="tag">Geology</span>
+            </div>
+            <div class="modal-details">
+                <div class="modal-detail-item">
+                    <i class="fas fa-building"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-text">Geosain Delta Andalan</div>
+                    </div>
+                </div>
+                <div class="modal-detail-item">
+                    <i class="fas fa-tasks"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-title">Key Responsibilities</div>
+                        <div class="modal-detail-text">
+                            <ul>
+                                <li>Seismic Interpretaions & Petrophysical Analysis</li>
+                                <li>Analysis Of Hydrocarbon Play Conceptual Modeling</li>
+                                <li>Volumetric Calculation Of Hydrocarbon Reserves</li>
+                                <li>Petroleum Economical Analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="modal-description">
+                Advanced seismic data processing and regional interpretation project focused on hydrocarbon exploration in the East Kalimantan Basin. The project involves comprehensive analysis of seismic data, structural interpretation, and reservoir characterization to identify potential hydrocarbon accumulations.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal for Project 2 -->
+    <div class="project-modal" id="modal-project2">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-image">
+                <img src="1. Bireuen.png" alt="Carbonate Study">
+            </div>
+            <h2 class="modal-title">Seismic Interpretaions Of North Sumatra Basin</h2>
+            <div class="modal-tags">
+                <span class="tag">Geophysics</span>
+                <span class="tag">Seismic</span>
+                <span class="tag">Geology</span>
+            </div>
+            <div class="modal-details">
+                <div class="modal-detail-item">
+                    <i class="fas fa-building"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-text">Geosain Delta Andalan</div>
+                    </div>
+                </div>
+                <div class="modal-detail-item">
+                    <i class="fas fa-tasks"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-title">Key Responsibilities</div>
+                        <div class="modal-detail-text">
+                            <ul>
+                                <li>Database Geoscience</li>
+                                <li>Seismic Interpretaions</li>
+                                <li>Analysis Of Hydrocarbon Play Conceptual Modeling</li>
+                                <li>Volumetric Calculation Of Hydrocarbon Reserves</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="modal-description">
+                Comprehensive study of carbonate reservoir characteristics and potential in the North Sumatra Basin Area. The project includes detailed analysis of updated geological map, reservoir properties, facies distribution, and potential hydrocarbon accumulation zones.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal for Project 3 -->
+    <div class="project-modal" id="modal-project3">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-image">
+                <img src="1. Migas Lampung Gravity-Seismic_2.png" alt="GIS Project">
+            </div>
+            <h2 class="modal-title">Gravity Modeling and Seismic Interpretations Of South Sumatra basin</h2>
+            <div class="modal-tags">
+                <span class="tag">Geophysics</span>
+                <span class="tag">Geology</span>
+                <span class="tag">Analysis</span>
+            </div>
+            <div class="modal-details">
+                <div class="modal-detail-item">
+                    <i class="fas fa-building"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-text">GeoHan</div>
+                    </div>
+                </div>
+                <div class="modal-detail-item">
+                    <i class="fas fa-tasks"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-title">Key Responsibilities</div>
+                        <div class="modal-detail-text">
+                            <ul>
+                                <li>Seismic Interpretaions</li>
+                                <li>Gravity Interpretations and Forward Modelling</li>
+                                <li>Hydrocarbon Fluid Lab Analysis</li>
+                                <li>Analysis Of Hydrocarbon Play Conceptual Modeling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="modal-description">
+                Studies on petroleum geology, interpreting structural alignment, studying stratigraphy, and laboratory analysis of hydrocarbon fluids in areas where there are major indications of the presence of oil and gas in the South Sumatra Basin
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal for Project 4 -->
+    <div class="project-modal" id="modal-project4">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-image">
+                <img src="1. Madyasta Geologi.png" alt="GIS Project">
+            </div>
+            <h2 class="modal-title">Lithology Distribution Modeling Based on Sub-Bottom Profiler data and Samples</h2>
+            <div class="modal-tags">
+                <span class="tag">Oceanographic</span>
+                <span class="tag">Geophysics</span>
+                <span class="tag">Geohazard</span>
+            </div>
+            <div class="modal-details">
+                <div class="modal-detail-item">
+                    <i class="fas fa-building"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-text">Madyasta Geotama Indonesia</div>
+                    </div>
+                </div>
+                <div class="modal-detail-item">
+                    <i class="fas fa-tasks"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-title">Key Responsibilities</div>
+                        <div class="modal-detail-text">
+                            <ul>
+                                <li>Sub-Buttom Profiler Interpretations</li>
+                                <li>Grab Sample Analysis</li>
+                                <li>Geostatistical Analysis and Modeling</li>
+                                <li>Analysis Of Sand Distribution and Modeling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="modal-description">
+                Study on the calculation of sandstone volume under the sea using sub-bottom profiler and grab sample surveys, and geomodeling analysis to determine the volume of excavated materials in the Seribu Islands area.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal for Project 5 -->
+    <div class="project-modal" id="modal-project5">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-image">
+                <img src="1. GIS_Madyasta_Metland_2.png" alt="GIS Project">
+            </div>
+            <h2 class="modal-title">GIS Mapping Project</h2>
+            <div class="modal-tags">
+                <span class="tag">GIS</span>
+                <span class="tag">Mapping</span>
+                <span class="tag">Analysis</span>
+            </div>
+            <div class="modal-details">
+                <div class="modal-detail-item">
+                    <i class="fas fa-building"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-text">Madyasta Geotama Indonesia</div>
+                    </div>
+                </div>
+                <div class="modal-detail-item">
+                    <i class="fas fa-tasks"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-title">Key Responsibilities</div>
+                        <div class="modal-detail-text">
+                            <ul>
+                                <li>Total Stations Operator</li>
+                                <li>Geodetic Operator</li>
+                                <li>Drone Mapping Operator</li>
+                                <li>GIS Processing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="modal-description">
+                Digital mapping and spatial analysis project focusing on land Application. The project utilizes advanced GIS technology for accurate mapping and comprehensive spatial analysis for building permit.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal for Project 6 -->
+    <div class="project-modal" id="modal-project6">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-image">
+                <img src="1. Kemendikbud_Pindul_2.png" alt="GIS Project">
+            </div>
+            <h2 class="modal-title">Microseismic Survey for Geohazard on Pindul Cave Area</h2>
+            <div class="modal-tags">
+                <span class="tag">Geophysics</span>
+                <span class="tag">Geohazard</span>
+                <span class="tag">Hydrography</span>
+            </div>
+            <div class="modal-details">
+                <div class="modal-detail-item">
+                    <i class="fas fa-building"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-text">Kemendikbud and BMKG Yogyakarta</div>
+                    </div>
+                </div>
+                <div class="modal-detail-item">
+                    <i class="fas fa-tasks"></i>
+                    <div class="modal-detail-content">
+                        <div class="modal-detail-title">Key Responsibilities</div>
+                        <div class="modal-detail-text">
+                            <ul>
+                                <li>Microseismic and Geological Survey</li>
+                                <li>Cave Exploration</li>
+                                <li>Advanced Microseismic Processing Data</li>
+                                <li>Zone Modelling for Geohazard Mitigations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="modal-description">
+                The study by the Ministry of Education and Culture and my team in collaboration with BMKG Yogyakarta in determining the danger zone in the limestone area which is a residential area, conducted microseismic and geological surveys, and cave exploration to determine the liquefaction zone, sinkhole, and subsidence in the Pindul Cave area.
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                document.querySelectorAll('.project-card').forEach(card => {
+                    const category = card.parentElement.getAttribute('data-category');
+                    if (filter === 'all' || filter === category) {
+                        card.parentElement.style.display = 'block';
+                    } else {
+                        card.parentElement.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Updated Modal functionality
+        document.querySelectorAll('.project-link.view-demo').forEach((button, index) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modal = document.getElementById(`modal-project${index + 1}`);
+                modal.style.display = 'block';
+                // Trigger reflow
+                void modal.offsetWidth;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        document.querySelectorAll('.modal-close').forEach(closeButton => {
+            closeButton.addEventListener('click', () => {
+                const modal = closeButton.closest('.project-modal');
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 400); // Match this with your transition duration
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('project-modal')) {
+                const modal = e.target;
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>
+
+    <!-- Footer -->
+    <footer class="text-white text-center">
+        <p>Every project on this page reflects my commitment to quality, innovation, and real results</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.5rem 0';
+                navbar.style.background = 'rgba(45, 52, 54, 0.98) !important';
+            } else {
+                navbar.style.padding = '1rem 0';
+                navbar.style.background = 'rgba(45, 52, 54, 0.95) !important';
+            }
+        });
+    </script>
+</body>
+</html>

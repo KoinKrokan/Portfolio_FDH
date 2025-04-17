@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #000000;
+            --accent-color: #ffffff;
+            --dark-color: #000000;
+            --light-color: #e8b5f5;
+            --text-color: #000000;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Aptos', Arial, sans-serif;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--light-color);
+            box-shadow: var(--box-shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 40px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-color);
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .hero .btn {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .hero .btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--light-color);
+            border: 4px solid var(--secondary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 25px;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .date {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .company {
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .timeline-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .timeline-content li {
+            margin-bottom: 5px;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            flex: 1 1 300px;
+            max-width: 350px;
+            transition: var(--transition);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+        }
+        
+        /* Achievements Section */
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .achievement-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .achievement-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .achievement-card p {
+            color: var(--text-color);
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-color);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1 1 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form {
+            flex: 1 1 400px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 137, 199, 0.2);
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 22px;
+            }
+            
+            .left::after, .right::after {
+                left: 22px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .skill-category {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 26px;
+                margin-bottom: 30px;
+            }
+        }
+
+/* Navbar Styles */
+.navbar {
+            background: #000000 !important;
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 500;
+            font-size: 1.25rem;
+            color: var(--text-light) !important;
+            padding: 0 1rem;
+        }
+        
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.65) !important;
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: rgba(255, 255, 255, 0.95) !important;
+            font-weight: 400;
+        }
+
+        .navbar-nav .nav-link.active::after {
+            display: none;
+        }
+
+        /* Hero Section Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Fauzi Daffa Hanatha</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="experience.html">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">My Project</a></li>
+                    <li class="nav-item"><a class="nav-link" href="publications.html">My Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="justify-content-center py-5" style="background: linear-gradient(rgba(155, 76, 135, 0.7), rgba(31, 32, 73, 0.7)), url('Background Experience.jpg'); background-size: cover; background-position: center; color: rgb(255, 255, 255);">
+        <div class="container py-5">
+            <div class="hero-content">
+                <h1 class="text-center mb-4">Carreer Summary</h1>
+                <p style="text-align: justify;">When I was in college, I had an internship experience at PPPTMGB "LEMIGAS", I learned about seismic data processing and its interpretation as a geoscientist, understood carbonate reservoir characteristics and determined the presence of oil through petrophysical data. I have experience in seismic pre-processing, hydrographic data processing, marine geophysical data processing, and also have experience as a Junior Geoscientist at Geosain Delta Andalan Company, I was involved in making subsurface maps, conceptual hydrocarbon models play, and estimation of hydrocarbon reserves. I am actively involved in academic and non-academic organizations, I serve as a physics assistant and mapping assistant coordinator, I am also involved as an editor at the Indonesian Geophysics Department Association and Student Association. I have the personality of being able to work in a team, time management, problem-solving, good communication, creativity, and organized. I am familiar with geoscience software (Promax, Petrel, Hypack, CGG HRS, PaleoScan, Interactive Petrophysics, Oasis Montaj, etc.) and Microsoft Office for project reporting.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <!-- Experience Item 1 -->
+                <div class="timeline-item left visible">
+                    <div class="timeline-content">
+                        <h3>Junior Geophysicist</h3>
+                        <span class="date">October 2023 - Present</span>
+                        <span class="company">Geosain Delta Andalan</span>
+                        <p>Carry out Oil and Gas Explorations Project Activities</p>
+                        <ul>
+                            <li>Analysis Of Hydrocarbon Play Conceptual Modeling And Volumetric Calculation Of Hydrocarbon Reserves (Unconventional Reservoirs) In The East Kalimantan Basin For The Preparation Of Geological Synopsis And Further Exploration Activities, Pesut Mahakam Block</li>
+                            <li>Ancient - Modern Carbonate Filedtrip, Surface & Sub-surface Sedimentologt From Seribu Islands to Bogor City</li>
+                            <li>Integrated Surface–Subsurface Geological Study Of Bireuen Sigli Block 2024 The North Sumatra Basin </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 2 -->
+                <div class="timeline-item right visible">
+                    <div class="timeline-content">
+                        <h3>Geoscientist</h3>
+                        <span class="date">June 2024 - Prensent</span>
+                        <span class="company">Madyasta Geotama Indonesia</span>
+                        <p>Carry out Near-Surface Geophysical and Geodetic Survey Project Activities</p>
+                        <ul>
+                            <li>Measurement of land and building area, and creation of situation maps for HGB (Hak Guna Bangunan)</li>
+                            <li>Analysis Of The Distribution Of Marine Sediment Lithology Based On Geotechnical Surveys, Rock Samples, And Sub-bottom Profilers In The Seribu Islands Administrative District, Jakarta </li>
+                            <li>Drone Mapping for Flood Simulation in Bekasi Area</li>
+                            <li>Ground Penetrating Radar Survey for Building Inspection</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 3 -->
+                <div class="timeline-item left visible">
+                    <div class="timeline-content">
+                        <h3>Junior Geoscientist</h3>
+                        <span class="date">January 2024 - March 2025</span>
+                        <span class="company">Indogeo Social Enterprise</span>
+                        <p>Carry out Activities Regarding Petroleum and Geology In The MENA (Middle East - North Africa) Area</p>
+                        <ul>
+                            <li>Study Petroleum Geology Of MENA (Middle East - North Africa) </li>
+                            <li>Collecting geological, geophysical, and GIS databases Of MENA (Middle East - North Africa) </li>
+                            <li>Digitization of geological maps, geological model, and petroleum information in the MENA (Middle East - North Africa)</li>
+                            <li>Prepare training and sharing sessions related to petroleum and geology in the MENA (Middle East - North Africa)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 4 -->
+                <div class="timeline-item right visible">
+                    <div class="timeline-content">
+                        <h3>Geophysicist internship</h3>
+                        <span class="date">December 2022 - March 20223</span>
+                        <span class="company">Pusat Penelitian dan Pengembangan Teknologi Minyak dan Gas Bumi Lembaga Minyak dan Gas Bumi "LEMIGAS"</span>
+                        <p>Gain hands-on experience working on Oil and Gas Geoscientist Projects</p>
+                        <ul>
+                            <li>Analyzing Well Petrophysical Data on Carbonate Rocks</li>
+                            <li>Gravity Data Analysis For Structure and High-Low Determining</li>
+                            <li>QI Seismic Interpretations; Seismic Attributes & Inversion; Seismic Multi-attribute; Neural Network</li>
+                            <li>Determining The Presence of Hydrocarbons and Hydrocarbon Boundaries (OWC and OGC) and Probabilistic Volumetric</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Item 5 -->
+                <div class="timeline-item left visible">
+                    <div class="timeline-content">
+                        <h3>Junior Geoscientist</h3>
+                        <span class="date">April 2022 - May 2022</span>
+                        <span class="company">Pusat Sumber Daya Mineral Batubara dan Panas Bumi</span>
+                        <p>Gain hands-on experience working on Mining Geoscientist Projects</p>
+                        <ul>
+                            <li>Geological and Geoeletrical Survey</li>
+                            <li>2D and 3D Geological Models of Distribution on 3 Blocks</li>
+                            <li>Interpreting Geoelectric and Geological Data in The Distribution of Granite</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Skills</h2>
+            <div class="skills-container">
+                <!-- Technical Skills -->
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Geological Modelling</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>QI Seismic Interpretations</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Petrophysical Analysis</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Gravity and Magnetic interpretations</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Near-Surface Geophysics</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Skills -->
+                <div class="skill-category">
+                    <h3>Professional Skills</h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Project Management</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Team Leadership</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Problem Solving</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Communication</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Time Management</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Technologies -->
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Petrel</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Hampson Russell</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>PaleoScan</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Oasis Montaj</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Interactive Petrophysics</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2 class="section-title">Other My Skills And Qualifications</h2>
+            <div class="achievements-container">
+                <!-- Achievement 1 -->
+                <div class="achievement-card">
+                    <h3>Leadership</h3>
+                    <p>"I have leadership skills in managing teamwork based on past experience where I was responsible for the teams"</p>
+                </div>
+                
+                <!-- Achievement 2 -->
+                <div class="achievement-card">
+                    <h3>Communications</h3>
+                    <p>"With excellent verbal and written skills, I can effectively convey an easily digestible message"</p>
+                </div>
+                
+                <!-- Achievement 3 -->
+                <div class="achievement-card">
+                    <h3>Problem-solving</h3>
+                    <p>"My problem-solving skills have stood the test of difficult work in the past, using creative solutions"</p>
+                </div>
+                
+                <!-- Achievement 4 -->
+                <div class="achievement-card">
+                    <h3>Interpersonal skill</h3>
+                    <p>"Teamwork is one of the important parts of my job, and I am sensitive to teammates with different cultures"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>As a geoscientist, my job is to solve problems and provide solutions to geological cases during my work. I strive to solve problems and find solutions based on geoscience in detail and easy to digest</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation for timeline items
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            function checkVisibility() {
+                timelineItems.forEach(item => {
+                    if (isInViewport(item)) {
+                        item.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Check on load
+            checkVisibility();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkVisibility);
+        });
+    </script>
+</body>
+</html>

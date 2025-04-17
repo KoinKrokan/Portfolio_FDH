@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publikasi - Fauzi Daffa Hanatha</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    
+/* Hero Section Animation */
+.hero-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(43, 75, 218, 0.4), rgba(168, 63, 182, 0.9)), url('Background publications.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-content h1 {
+            font-family: 'Aptos', Arial, sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-family: 'Aptos', Arial, sans-serif;
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+/* Navbar Styles */
+.navbar {
+            background: #000000 !important;
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-brand {
+            font-family: 'Aptos', Arial, sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            color: var(--text-light) !important;
+            padding: 0 1rem;
+        }
+        
+        .navbar-nav .nav-link {
+            font-family: 'Aptos', Arial, sans-serif;
+            color: rgba(255, 255, 255, 0.65) !important;
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: rgba(255, 255, 255, 0.95) !important;
+            font-weight: 400;
+        }
+
+        .navbar-nav .nav-link.active::after {
+            display: none;
+        }
+
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #334155;
+      --border-color: #475569;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent-color: #2563eb;
+      --accent-light: rgba(37, 99, 235, 0.2);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .publications-section {
+      padding: 5rem 1rem;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.97), rgba(118, 75, 162, 0.97));
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+    
+    .publications-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(43, 75, 218, 0.4), rgba(168, 63, 182, 0.9));
+      z-index: 1;
+    }
+    
+    .publications-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title {
+      font-family: 'Aptos', Arial, sans-serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .section-divider {
+      height: 4px;
+      width: 80px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+      margin: 0 auto;
+    }
+    
+    .publications-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .publication-card {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
+    
+    .publication-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .publication-content {
+      padding: 1.5rem;
+    }
+    
+    .publication-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .publication-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: rgb(0, 0, 0);
+      border-radius: 50%;
+    }
+    
+    .publication-title {
+      font-family: 'Aptos', Arial, sans-serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: rgb(0, 0, 0);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    
+    .publication-date {
+      font-family: 'Aptos', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      color: rgb(0, 0, 0);
+      margin-bottom: 0.75rem;
+    }
+    
+    .publication-date i {
+      margin-right: 0.5rem;
+      color: rgb(0, 0, 0);
+    }
+    
+    .publication-journal {
+      font-family: 'Aptos', Arial, sans-serif;
+      font-size: 0.875rem;
+      color: rgb(0, 0, 0);
+    }
+    
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .publication-header {
+        align-items: center;
+      }
+
+      .publications-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 992px) {
+      .publications-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    /* Animasi tambahan */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .publication-card:nth-child(1) { animation-delay: 0.1s; }
+    .publication-card:nth-child(2) { animation-delay: 0.2s; }
+    .publication-card:nth-child(3) { animation-delay: 0.3s; }
+    .publication-card:nth-child(4) { animation-delay: 0.4s; }
+    .publication-card:nth-child(5) { animation-delay: 0.5s; }
+    .publication-card:nth-child(6) { animation-delay: 0.6s; }
+    .publication-card:nth-child(7) { animation-delay: 0.7s; }
+  </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Fauzi Daffa Hanatha</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">My Project</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="publications.html">My Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>My Publications</h1>
+                <p>Below you will find all of my written works, scientific articles, books, and other publications that I have produced. Each work is the result of my commitment to research, innovation, and dedication in my field</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="publications-section">
+        <div class="container publications-content">
+            <div class="section-header">
+                <h2 class="section-title">All My Paper</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="publications-grid">
+                <!-- Publikasi 1 -->
+                <div class="publication-card">
+                    <div class="publication-content">
+                        <div class="publication-header">
+                            <div class="publication-icon">
+                                <i class="fas fa-file-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="publication-title">Identification Of Submergence Prone Zone Based On HVSR And Ground Shear Parameters Strain In Pindul Cave Area</h3>
+                                <div class="publication-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Published: 3-Dec-2022</span>
+                                </div>
+                                <p class="publication-journal">
+                                    Published by Geoscientific Journals
+                                </p>
+                                <a href="https://iptek.its.ac.id/index.php/geosaintek/article/view/14395" class="btn btn-outline-dark btn-sm mt-2">View Paper</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publikasi 2 -->
+                <div class="publication-card">
+                    <div class="publication-content">
+                        <div class="publication-header">
+                            <div class="publication-icon">
+                                <i class="fas fa-file-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="publication-title">Analysis Of Soil And Rock Strength Using Vs30 Value And Ground Shear Strain Based On Microtremor Data In The Pindul Cave Area, Gunung Kidul, Yogyakarta</h3>
+                                <div class="publication-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Published: 1-Apr-2023</span>
+                                </div>
+                                <p class="publication-journal">
+                                    Published by Geoscientific Journals
+                                </p>
+                                <a href="https://iptek.its.ac.id/index.php/geosaintek/article/view/16257" class="btn btn-outline-dark btn-sm mt-2">View Paper</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publikasi 3 -->
+                <div class="publication-card">
+                    <div class="publication-content">
+                        <div class="publication-header">
+                            <div class="publication-icon">
+                                <i class="fas fa-file-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="publication-title">Identification Of Subsurface Structure Based On Gravity Inversion And Euler Deconvolution In Imogiri District, Yogyakarta</h3>
+                                <div class="publication-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Published: 7-Dec-2023</span>
+                                </div>
+                                <p class="publication-journal">
+                                    Published by Wahana Physics: Physics And Its Application Journal
+                                </p>
+                                <a href="https://ejournal.upi.edu/index.php/wafi/article/view/62756" class="btn btn-outline-dark btn-sm mt-2">View Paper</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publikasi 4 -->
+                <div class="publication-card">
+                    <div class="publication-content">
+                        <div class="publication-header">
+                            <div class="publication-icon">
+                                <i class="fas fa-file-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="publication-title">Integration Of Gravitation Method And Geomagnetic Method Using Euler Deconvolution For Structure Delineation In Geothermal System In Umbul Temple-Telomoyo Area, Magelang, Central Java</h3>
+                                <div class="publication-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Published: 24-Oct-2024</span>
+                                </div>
+                                <p class="publication-journal">
+                                    Published by Journal of Geoscience and Technology
+                                </p>
+                                <a href="https://ejournal2.undip.ac.id/index.php/jgt/article/view/21817" class="btn btn-outline-dark btn-sm mt-2">View Paper</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publikasi 5 -->
+                <div class="publication-card">
+                    <div class="publication-content">
+                        <div class="publication-header">
+                            <div class="publication-icon">
+                                <i class="fas fa-file-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="publication-title">Analysis Of Sediment Thickness And Geohazard Potential Based On Sub Bottom Profiler Data On The River Lee, Ireland</h3>
+                                <div class="publication-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Published: 5-Dec-2024</span>
+                                </div>
+                                <p class="publication-journal">
+                                    Published by Wahana Physics: Physics And Its Application Journal
+                                </p>
+                                <a href="https://ejournal.upi.edu/index.php/wafi/article/view/75468" class="btn btn-outline-dark btn-sm mt-2">View Paper</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publikasi 6 -->
+                <div class="publication-card">
+                    <div class="publication-content">
+                        <div class="publication-header">
+                            <div class="publication-icon">
+                                <i class="fas fa-file-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="publication-title">Preliminary Estimation Of Rhyolite-Andesite Rock Reserve Of Quarry Materials Using Geoelectric Method In Biyuku Village, Bangko District, Jambi Province</h3>
+                                <div class="publication-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Published: 31-Apr-2025</span>
+                                </div>
+                                <p class="publication-journal">
+                                    Published by Journal of Exploration Geophysics
+                                </p>
+                                <a href="#" class="btn btn-outline-dark btn-sm mt-2">In Press</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publikasi 7 -->
+                <div class="publication-card">
+                    <div class="publication-content">
+                        <div class="publication-header">
+                            <div class="publication-icon">
+                                <i class="fas fa-file-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="publication-title">Pseudo 3D Seismic Generation Based On 2D Seismic Using Geostatistical Analysis</h3>
+                                <div class="publication-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Published: (In Press)</span>
+                                </div>
+                                <p class="publication-journal">
+                                    Published by Geoscientific Journals
+                                </p>
+                                <a href="#" class="btn btn-outline-dark btn-sm mt-2">In Press</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>As a geoscientist, I have to follow the development of science and technology. One of the contributions to developing geoscience is presenting research results in a journal as information and new methods</p>
+    </footer>
+</html>
