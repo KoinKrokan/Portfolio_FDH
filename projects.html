@@ -287,16 +287,33 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             color: #666;
+            font-size: 18px;
+            font-weight: bold;
             transition: all 0.3s ease;
             z-index: 1060;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .modal-close:hover {
-            color: var(--accent-color);
-            transform: scale(1.1);
+            background: #ff4757;
+            color: white;
+            border-color: #ff4757;
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .modal-close:active {
+            transform: scale(0.95);
         }
 
         .modal-title {
